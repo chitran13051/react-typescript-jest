@@ -1,12 +1,8 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-// import helloWorld from "Components/test";
-import Cake from "./Components/Cake";
-import helloWorld from "Components/test";
 import { Provider } from "react-redux";
+import "./App.css";
+import Cake from "./Components/Cake";
 import { store } from "./redux/store";
-helloWorld();
 function App(x: any) {
   return (
     <Provider store={store}>
@@ -20,4 +16,4 @@ function App(x: any) {
   );
 }
 
-export default App;
+export default App
