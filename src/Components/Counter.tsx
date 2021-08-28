@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { useAppDispatch, useAppSelector, RootState } from "../hooks/redux.hook";
-
+// import { useAppDispatch, useAppSelector, RootState } from "hooks/redux.hook";
+import { Button } from "themes/button";
 const mapState = (state: any) => {
   return {
     state: state,
@@ -19,7 +19,7 @@ function Cake(props: any) {
   return (
     <div>
       <h1>Count the cake</h1>
-      <button onClick={() => dispatch({ type: "increment" })}>Increment</button>
+      <Button onClick={() => dispatch({ type: "increment" })}>Increment</Button>
       {/* <p>Quantity : {stateStore.value}</p>
       <button onClick={() => dispatch({ type: "decrement" })}>Decrement</button> */}
     </div>
