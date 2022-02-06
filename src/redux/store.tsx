@@ -1,6 +1,5 @@
 import { createStore } from "redux";
 
-
 const counter = {
   value: 0,
   isLogged: false,
@@ -21,6 +20,3 @@ function countReducer(initialState: any = { ...counter }, action: any) {
 }
 
 export const store = createStore(countReducer);
-
-
-

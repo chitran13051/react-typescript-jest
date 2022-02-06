@@ -1,44 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
-// import { useAppDispatch, useAppSelector, RootState } from "hooks/redux.hook";
-import { Button } from "themes/button";
-const mapState = (state: any) => {
-  return {
-    state: state,
-  };
-};
+import { useAppDispatch, useAppSelector, RootState } from "hooks/redux.hook";
+import { Button } from "themes";
+import { store } from "../redux/store";
+export function Counter() {
+  // const dispatch = useAppDispatch();
+  // const stateStore = useAppSelector((state) => state);
 
-function Cake(props: any) {
-  //   const dispatch = useAppDispatch();
-  //   const stateStore = useAppSelector((state) => state);
-  const { dispatch, sayHi } = props;
-  console.log("PROPS  RECEIVED", props);
-  //   console.log(stateStore.value);
-  sayHi();
+  const [count, setCount] = useState(0);
+
   return (
-    <div>
-      <h1>Count the cake</h1>
-      <Button onClick={() => dispatch({ type: "increment" })}>Increment</Button>
-      {/* <p>Quantity : {stateStore.value}</p>
-      <button onClick={() => dispatch({ type: "decrement" })}>Decrement</button> */}
+    <div id='counter' data-testid='counter'>
+      <h1>Count the number</h1>
+      <Button onClick={() => setCount(count + 1)}>Increment</Button>
+      <p className='result'>Quantity : {count}</p>
+      <Button onClick={() => setCount(count - 1)}>Decrement</Button>
     </div>
   );
 }
-const sayHi = () => console.log("HEllo from Sayhi function");
 
-const mapStateToProps = (state: any, x: any) => {
-  console.log(x);
-  return {
-    value: state.value,
-    hello: "how are you",
-    hi: "XXXXX",
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => ({
-  dispatch,
-  sayHi,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Cake);
+export default Counter;

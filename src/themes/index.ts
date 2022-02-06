@@ -6,5 +6,12 @@ import { DefaultTheme } from "styled-components";
 //   }
 // }
 export const myTheme: DefaultTheme = {
-  maxPadding: "100px",
+  maxPadding: "20px",
+  color: {
+    warning: "black",
+  },
 };
+
+// Re-export, re-factor
+
+export * from "./button";
