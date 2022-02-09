@@ -9,16 +9,20 @@ const subject = () => {
   return render(<Square />);
 };
 
-jest.mock("./utils", () => ({
-  getBackgroundColor: jest.fn(),
-}));
+// jest.mock("./utils", () => ({
+//   // getBackgroundColor: jest.fn(),
+// }));
 // Object.defineProperty(window, "innerWidth", {
 //   writable: true,
 //   value: 1300,
 // });
 
 describe("test square component", () => {
-  const mockGetBackgroundColor = getBackgroundColor as jest.Mock;
+  const handleReszie = jest.fn();
+  beforeAll(() => {
+    window.addEventListener("resize", handleReszie);
+  });
+  // const mockGetBackgroundColor = getBackgroundColor as jest.Mock;
   it("render correctly ", () => {
     const { baseElement } = subject();
     expect(baseElement).toBeTruthy();
@@ -28,12 +32,13 @@ describe("test square component", () => {
   it("should render color correctly", () => {
     //TODO : Should mock window.innerWidth **********
 
-    mockGetBackgroundColor.mockReturnValue("green");
-    const { container, rerender } = subject();
+    // mockGetBackgroundColor.mockReturnValue("green");
+    // mockGetBackgroundColor;
+    const { container } = render(<Square />);
 
     const wrapSquare = container.querySelector(".wrapSquare");
     const styles = getComputedStyle(wrapSquare as HTMLDivElement);
-    expect(styles.background).toEqual("green");
+    // expect(styles.background).toEqual("green");
     // expect(window.innerWidth).toBeLessThan(600);
     // Object.defineProperty(window, "innerWidth", {
     //   writable: true,
@@ -48,5 +53,26 @@ describe("test square component", () => {
     // mockGetBackgroundColor.mockReturnValue("yellow");
     // subject();
     // expect(styles.background).toEqual("yellow");
+  });
+
+  it("should change color when user resize", () => {
+    expect(handleReszie).not.toHaveBeenCalled();
+    // mockGetBackgroundColor.mockReturnValue("green");
+    // mockGetBackgroundColor;
+    window.innerWidth = 300;
+    window.dispatchEvent(new Event("resize"));
+    const { container } = render(<Square />);
+
+    const wrapSquare = container.querySelector(".wrapSquare");
+    const styles = getComputedStyle(wrapSquare as HTMLDivElement);
+    expect(styles.background).toEqual("yellow");
+
+    act(() => {
+      window.innerWidth = 1300;
+      window.dispatchEvent(new Event("resize"));
+    });
+    const newWrapSquare = container.querySelector(".wrapSquare");
+    const styles1 = getComputedStyle(newWrapSquare as HTMLDivElement);
+    expect(styles1.background).toEqual("green");
   });
 });
