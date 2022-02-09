@@ -1,18 +1,20 @@
 import React, { JSXElementConstructor, useEffect, useState } from "react";
-import { changeBackgroundColor, changeColor } from "./utils";
+import { getBackgroundColor, changeColor } from "./utils";
 import { SquareSt } from "../themes/button";
 
 export const Square = (): JSX.Element => {
-  let initialBreakpoint = window.innerWidth;
-  let initialColor = changeBackgroundColor(initialBreakpoint);
-  const [breakpoint, setBreakpoint] = useState(initialBreakpoint);
-  let [color, setColor] = useState(initialColor);
+  const [color, setColor] = useState(getBackgroundColor());
 
-  window.addEventListener("resize", () => {
-    setBreakpoint(window.innerWidth);
-    color = changeBackgroundColor(breakpoint);
-    setColor(color);
-  });
+  const handleResize = () => {
+    setColor(getBackgroundColor());
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <SquareSt className='wrapSquare' color={color}>
