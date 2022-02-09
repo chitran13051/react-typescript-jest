@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen, act } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Counter } from "./Counter";
 
 const subject = () => {
@@ -18,7 +19,8 @@ describe("Test Button component", () => {
     const incrementBtn = container.querySelectorAll("button")[0];
     const result = container.querySelector(".result");
 
-    incrementBtn.click();
+    // incrementBtn.click();
+    userEvent.click(incrementBtn);
 
     expect(result?.innerHTML).toContain("1");
   });

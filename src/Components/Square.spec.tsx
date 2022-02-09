@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { Square } from "./Square";
 import { SquareSt } from "themes";
-import { changeColor } from "./utils";
+import { changeBackgroundColor } from "./utils";
 // import { changeColor } from "Components/utils";
 
 const subject = () => {
@@ -10,7 +10,7 @@ const subject = () => {
 };
 
 jest.mock("./utils", () => ({
-  changeColor: () => "black",
+  changeBackgroundColor: () => "green",
 }));
 
 describe("test square component", () => {
@@ -24,6 +24,7 @@ describe("test square component", () => {
     const { container } = render(<Square />);
     const wrapSquare = container.querySelector(".wrapSquare");
     const styles = getComputedStyle(wrapSquare as HTMLDivElement);
-    expect(styles.background).toEqual("black");
+    expect(styles.background).toEqual("green");
   });
+  it("should render color according to viewport", () => {});
 });

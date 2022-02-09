@@ -1,5 +1,5 @@
 import GoogleAd from "Components/GoogleAd";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 import { Provider } from "react-redux";
 import { store } from "redux/store";
 import { ThemeProvider } from "styled-components";
@@ -11,7 +11,7 @@ import Cake from "./Components/Counter";
 import { Auto } from "./Shared/Auto";
 import Counter from "./Components/Counter";
 import { Square } from "Components/Square";
-
+import Form from "./Components/Form";
 function App(): ReactElement {
   const audi = new Auto("audi a4", 1950);
   const bwm = new Auto("bwm", 1620);
@@ -20,7 +20,7 @@ function App(): ReactElement {
   // console.log(Auto.name);
   // audi.start();
   // Auto.prototype.start();
-  Auto.start();
+  // Auto.start();
   return (
     <div>
       <Provider store={store}>
@@ -30,6 +30,7 @@ function App(): ReactElement {
             {/* <GoogleAd /> */}
             {/* <Counter /> */}
             <Square />
+            <Form />
           </div>
         </ThemeProvider>
       </Provider>
