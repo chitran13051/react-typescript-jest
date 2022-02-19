@@ -2,7 +2,7 @@ import React from "react";
 import { act, render, screen } from "@testing-library/react";
 import { Square } from "./Square";
 import { SquareSt } from "themes";
-import { getBackgroundColor } from "./utils";
+import { getBackgroundColor } from "../utils";
 // import { changeColor } from "Components/utils";
 
 const subject = () => {
@@ -12,15 +12,14 @@ const subject = () => {
 // jest.mock("./utils", () => ({
 //   // getBackgroundColor: jest.fn(),
 // }));
-// Object.defineProperty(window, "innerWidth", {
-//   writable: true,
-//   value: 1300,
-// });
 
 describe("test square component", () => {
   const handleReszie = jest.fn();
   beforeAll(() => {
     window.addEventListener("resize", handleReszie);
+  });
+  afterAll(() => {
+    window.removeEventListener("resize", handleReszie);
   });
   // const mockGetBackgroundColor = getBackgroundColor as jest.Mock;
   it("render correctly ", () => {
@@ -59,9 +58,9 @@ describe("test square component", () => {
     expect(handleReszie).not.toHaveBeenCalled();
     // mockGetBackgroundColor.mockReturnValue("green");
     // mockGetBackgroundColor;
+    const { container } = render(<Square />);
     window.innerWidth = 300;
     window.dispatchEvent(new Event("resize"));
-    const { container } = render(<Square />);
 
     const wrapSquare = container.querySelector(".wrapSquare");
     const styles = getComputedStyle(wrapSquare as HTMLDivElement);

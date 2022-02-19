@@ -6,6 +6,7 @@ import { DefaultTheme } from "styled-components";
 //   }
 // }
 export const myTheme: DefaultTheme = {
+ 
   maxPadding: "20px",
   color: {
     warning: "black",

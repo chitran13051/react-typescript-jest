@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { useAppDispatch, useAppSelector, RootState } from "hooks/redux.hook";
 import { Button } from "themes";
-import { store } from "../redux/store";
+import { store } from "../../redux/store";
 export function Counter() {
   // const dispatch = useAppDispatch();
   // const stateStore = useAppSelector((state) => state);

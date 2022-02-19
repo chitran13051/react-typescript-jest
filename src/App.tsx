@@ -6,35 +6,36 @@ import { ThemeProvider } from "styled-components";
 import { myTheme } from "themes";
 import { DFPSlotsProvider, AdSlot } from "react-dfp";
 import "./App.css";
-import Cake from "./Components/Counter";
+import Cake from "./Components/Counter/Counter";
 
-import { Auto } from "./Shared/Auto";
-import Counter from "./Components/Counter";
-import { Square } from "Components/Square";
-import Form from "./Components/Form";
+// import { Auto } from "./Shared/Auto";
+import Counter from "./Components/Counter/Counter";
+import { Square } from "Components/Square/Square";
+import Form from "./Components/Form/Form";
+import StickyButton from "Components/StickyButton/StickyButton";
 function App(): ReactElement {
-  const audi = new Auto("audi a4", 1950);
-  const bwm = new Auto("bwm", 1620);
-
+  // const audi = new Auto("audi a4", 1950);
+  // const bwm = new Auto("bwm", 1620);
   // console.log(audi.start());
   // console.log(Auto.name);
   // audi.start();
   // Auto.prototype.start();
   // Auto.start();
   return (
-    <div>
+
+    <ThemeProvider theme={myTheme}>
       <Provider store={store}>
-        <ThemeProvider theme={myTheme}>
-          <div className='App'>
-            <p>Hello</p>
-            {/* <GoogleAd /> */}
-            {/* <Counter /> */}
-            <Square />
-            <Form />
-          </div>
-        </ThemeProvider>
+        <div className='App'>
+          <p>Hello</p>
+          <StickyButton />
+          {/* <GoogleAd /> */}
+          {/* <Counter /> */}
+          {/* <Square /> */}
+          {/* <Form /> */}
+        </div>
       </Provider>
-    </div>
+    </ThemeProvider>
+
   );
 }
 
