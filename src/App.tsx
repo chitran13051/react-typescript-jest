@@ -14,7 +14,9 @@ import Counter from "./Components/Counter/Counter";
 import { Square } from "Components/Square/Square";
 import Form from "./Components/Form/Form";
 import StickyButton from "Components/StickyButton/StickyButton";
-import messages from '../src/message.de.json'
+
+import messagesDe from './Shared/messages/message.de.json'
+
 function App(): ReactElement {
   // const audi = new Auto("audi a4", 1950);
   // const bwm = new Auto("bwm", 1620);
@@ -34,7 +36,7 @@ function App(): ReactElement {
           {/* <Counter /> */}
           {/* <Square /> */}
           {/* <Form /> */}
-          <MessageProvider messages={messages}>
+          <MessageProvider messages={messagesDe}>
             <Message id='header.name' age='8' />
           </MessageProvider>
         </div>
