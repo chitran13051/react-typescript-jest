@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "-": "^0.0.1",
+    "@messageformat/react": "^1.0.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -10,8 +12,10 @@
     "@types/node": "^12.20.19",
     "@types/react": "^17.0.18",
     "@types/react-dom": "^17.0.9",
+    "D": "^1.0.0",
     "express": "^4.17.1",
     "react": "^17.0.2",
+    "react-app-rewired": "^2.2.1",
     "react-dfp": "^0.21.0",
     "react-dom": "^17.0.2",
     "react-gpt": "^2.0.1",
@@ -23,7 +27,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-app-rewired start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "dev": "nodemon src/server.js",
@@ -48,6 +52,8 @@
     ]
   },
   "devDependencies": {
+    "@messageformat/core": "^3.0.1",
+    "@messageformat/loader": "^1.0.0",
     "@types/styled-components": "^5.1.13",
     "nodemon": "^2.0.13"
   }
