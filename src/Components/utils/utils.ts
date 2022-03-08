@@ -12,3 +12,4 @@ export const getBackgroundColor = (breakpoint = window.innerWidth) => {
   }
   return "red";
 };
+

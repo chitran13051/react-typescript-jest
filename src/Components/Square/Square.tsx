@@ -1,5 +1,5 @@
 import React, { JSXElementConstructor, useEffect, useState } from "react";
-import { getBackgroundColor, changeColor } from "../utils";
+import { getBackgroundColor, changeColor } from "../utils/utils";
 import { SquareSt } from "../../themes/button";
 
 export const Square = (): JSX.Element => {

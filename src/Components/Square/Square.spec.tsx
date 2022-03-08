@@ -2,7 +2,7 @@ import React from "react";
 import { act, render, screen } from "@testing-library/react";
 import { Square } from "./Square";
 import { SquareSt } from "themes";
-import { getBackgroundColor } from "../utils";
+import { getBackgroundColor } from "../utils/utils";
 // import { changeColor } from "Components/utils";
 
 const subject = () => {
