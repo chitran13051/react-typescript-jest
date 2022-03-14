@@ -1,48 +1,19 @@
-import GoogleAd from "Components/GoogleAd";
-import React, { ReactElement, useEffect } from "react";
-import { Provider } from "react-redux";
-import { store } from "redux/store";
-import { ThemeProvider } from "styled-components";
-import { myTheme } from "themes";
-import { DFPSlotsProvider, AdSlot } from "react-dfp";
-import { MessageProvider, Message } from '@messageformat/react'
-import "./App.css";
-import Cake from "./Components/Counter/Counter";
+import { ReactElement } from "react";
+import { useDispatch, useSelector, } from "react-redux";
 
-// import { Auto } from "./Shared/Auto";
-import Counter from "./Components/Counter/Counter";
-import { Square } from "Components/Square/Square";
-import Form from "./Components/Form/Form";
-import StickyButton from "Components/StickyButton/StickyButton";
-
-import messagesDe from './Shared/messages/message.de.json'
+import { RootState } from "hooks/redux.hook";
 
 function App(): ReactElement {
-  // const audi = new Auto("audi a4", 1950);
-  // const bwm = new Auto("bwm", 1620);
-  // console.log(audi.start());
-  // console.log(Auto.name);
-  // audi.start();
-  // Auto.prototype.start();
-  // Auto.start();
+  const counterValue = useSelector((state: RootState) => state)
+  const dispatch = useDispatch()
   return (
-
-    <ThemeProvider theme={myTheme}>
-      <Provider store={store}>
-        <div className='App'>
-          <p>Hello</p>
-          {/* <StickyButton /> */}
-          {/* <GoogleAd /> */}
-          {/* <Counter /> */}
-          {/* <Square /> */}
-          {/* <Form /> */}
-          <MessageProvider messages={messagesDe}>
-            <Message id='header.name' age='8' />
-          </MessageProvider>
-        </div>
-      </Provider>
-    </ThemeProvider>
-
+    <>
+      <h1>{counterValue.countReducer.value}</h1>
+      <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>Decrement</button>
+      <h2>{counterValue.LogReducer.isLogged ? "Logged" : 'Logout'}</h2>
+      <button onClick={() => dispatch({ type: counterValue.LogReducer.isLogged ? 'logOut' : 'logIn' })}>{counterValue.LogReducer.isLogged ? "Logged" : 'Logout'}</button>
+    </>
   );
 }
 
